@@ -118,7 +118,17 @@ namespace Al_01_Spirala
             //DrawL();
 
 
-            SpiralToField(stepNum);
+            //Stopwatch stopwatchRecursive = new Stopwatch();
+            //stopwatchRecursive.Start();
+            SpiralToField(stepNum);  
+            //stopwatchRecursive.Stop();
+            //long elapsedTimeRecursive = stopwatchRecursive.ElapsedMilliseconds;
+
+            //Stopwatch stopwatchLoop = new Stopwatch();
+            //stopwatchLoop.Start();
+            //SpiralToFieldUsingWhile(stepNum);  
+            //stopwatchLoop.Stop();
+            //long elapsedTimeLoop = stopwatchLoop.ElapsedMilliseconds;
 
             //vykresli celé pole
             DrawSpiral();
@@ -138,6 +148,21 @@ namespace Al_01_Spirala
             stepNum++;
 
             SpiralToField(stepNum);
+        }
+
+        private void SpiralToFieldUsingWhile(int stepNum)
+        {
+            while (true)
+            {
+                Turn90();
+                CalculateGap(stepNum);
+                DrawL();
+
+                if (d >= nextL - d)
+                    break;
+
+                stepNum++;
+            }
         }
 
         private void Turn90()
